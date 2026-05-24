@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# 向量库持久化数据
+chroma_db/
+
+# 本地模型文件
+models/
+
+# 虚拟环境
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 环境变量
+.env
+*.env.local
+
+# Docker
+.dockerignore

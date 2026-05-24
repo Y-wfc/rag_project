@@ -1,0 +1,27 @@
+# ============================================
+# docker-compose.yml - RAG Demo 项目
+# ============================================
+version: "3.9"
+
+services:
+  rag-demo:
+    build: .
+    container_name: rag-demo
+    ports:
+      - "7860:7860"
+    environment:
+      - DASHSCOPE_API_KEY=${DASHSCOPE_API_KEY}
+      - DASHSCOPE_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY}
+      - OPENAI_API_KEY=${DEEPSEEK_API_KEY}
+      - OPENAI_BASE_URL=https://api.deepseek.com/v1
+    volumes:
+      # 持久化 Chroma 向量库，避免每次重新构建
+      - chroma_data:/app/chroma_db
+      # 模型缓存，避免每次重新下载
+      - model_cache:/root/.cache
+    restart: unless-stopped
+
+volumes:
+  chroma_data:
+  model_cache:
